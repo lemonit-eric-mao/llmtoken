@@ -12,7 +12,7 @@ import (
 
 // Config 配置结构体
 type Config struct {
-	Apiurl string `json:"Apiurl,omitempty"`
+	Apiurl string `json:"Apiurl,omitempty"` // 注意这里的命名不要驼峰，否则插件加载有问题
 }
 
 // CreateConfig 创建默认配置
