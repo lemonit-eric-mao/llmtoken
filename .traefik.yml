@@ -1,0 +1,10 @@
+displayName: Traefik Tokenizer
+summary: 一个用于 Traefik 的 Token 记录插件，用于捕获请求/响应并上报至外部 API。
+testData:
+  api_url: http://localhost:8000/log
+
+author: 毛巳煜
+license: MIT
+type: middleware
+# 👇👇👇 这个字段（非常重要！！！）
+module: llmtoken
