@@ -12,7 +12,7 @@ import (
 
 // Config 配置结构体
 type Config struct {
-	ApiURL string `json:"api_url,omitempty"`
+	Apiurl string `json:"Apiurl,omitempty"`
 }
 
 // CreateConfig 创建默认配置
@@ -24,18 +24,18 @@ func CreateConfig() *Config {
 type TokenPlugin struct {
 	next   http.Handler
 	name   string
-	apiURL string
+	Apiurl string
 }
 
 // New 插件实例化
 func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
-	if config.ApiURL == "" {
-		return nil, fmt.Errorf("api_url is required")
+	if config.Apiurl == "" {
+		return nil, fmt.Errorf("Apiurl is required")
 	}
 	return &TokenPlugin{
 		next:   next,
 		name:   name,
-		apiURL: config.ApiURL,
+		Apiurl: config.Apiurl,
 	}, nil
 }
 
@@ -95,7 +95,7 @@ func (p *TokenPlugin) sendToFastAPI(req *http.Request, reqBody, resBody []byte, 
 		return
 	}
 
-	resp, err := http.Post(p.apiURL, "application/json", bytes.NewBuffer(data))
+	resp, err := http.Post(p.Apiurl, "application/json", bytes.NewBuffer(data))
 	if err != nil {
 		fmt.Printf("failed to send payload: %v\n", err)
 		return

@@ -1,10 +1,15 @@
+# 插件在 Traefik Pilot 页面中显示的名字
 displayName: Traefik Tokenizer
-summary: 一个用于 Traefik 的 Token 记录插件，用于捕获请求/响应并上报至外部 API。
-testData:
-  api_url: http://localhost:8000/log
 
-author: 毛巳煜
-license: MIT
+# 插件类型，目前仅支持 middleware（中间件）
 type: middleware
-# 👇👇👇 这个字段（非常重要！！！）
-module: llmtoken
+
+# 插件的导入路径，必须与 go.mod 文件中的 module 字段一致
+import: github.com/lemonit-eric-mao/llmtoken
+
+# 插件的简要描述
+summary: 一个用于在请求中自动注入 LLM Token 的 Traefik 中间件插件
+
+# 插件测试时使用的默认配置数据（Traefik Pilot 会用这些数据验证插件）
+testData:
+  Token: "test-token"
